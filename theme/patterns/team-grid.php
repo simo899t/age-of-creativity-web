@@ -11,8 +11,8 @@ if (!function_exists('aoc_person_block')) {
 }
 $bio = 'Two or three sentences about research interests and role in the project.';
 ?>
-<!-- wp:group {"className":"aoc-people","layout":{"type":"grid","minimumColumnWidth":"19rem"}} -->
-<div class="wp-block-group aoc-people">
+<!-- wp:group {"align":"wide","className":"aoc-people","layout":{"type":"grid","minimumColumnWidth":"13rem"}} -->
+<div class="wp-block-group alignwide aoc-people">
 <?php
 echo aoc_person_block('Name Surname', 'Principal investigator', $bio);
 echo aoc_person_block('Name Surname', 'Postdoctoral researcher', $bio);

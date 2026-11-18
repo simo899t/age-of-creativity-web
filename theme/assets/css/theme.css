@@ -3,7 +3,8 @@
 
 /* WordPress defines its preset variables on body, so ours go there too. */
 body {
-  --aoc-radius: 6px;
+  --aoc-radius: 0px;
+  --aoc-wide: min(100%, var(--wp--style--global--wide-size));
   --aoc-ui: var(--wp--preset--font-family--ui);
   --aoc-ease: cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-font-smoothing: antialiased;
@@ -16,7 +17,7 @@ body {
 }
 
 :where(h1, h2, h3) {
-  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-variation-settings: "opsz" 32;
   text-wrap: balance;
 }
 
@@ -153,10 +154,9 @@ a {
   min-width: 12rem !important;
   margin-top: 0.4rem;
   padding: 0.4rem 0 !important;
-  border: 1px solid var(--wp--preset--color--line) !important;
-  border-radius: var(--aoc-radius);
-  background: var(--wp--preset--color--surface) !important;
-  box-shadow: 0 16px 36px -18px rgba(29, 28, 26, 0.28);
+  border: 0 !important;
+  border-top: 1px solid var(--wp--preset--color--ink) !important;
+  background: var(--wp--preset--color--paper) !important;
 }
 .aoc-nav .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
   width: 100%;
@@ -218,51 +218,120 @@ a {
   margin-top: 0;
 }
 
-/* ---------- Page header ---------- */
+/* ---------- Page header ----------
+   Title runs the full wide measure; the lead sits on the text axis, where
+   the page's own text starts (5/12 in from the left on desktop). */
+/* The template part wrapper would otherwise hold the header to the text width. */
+.is-layout-constrained > .wp-block-template-part:has(> .aoc-page-header) {
+  max-width: var(--wp--style--global--wide-size);
+}
 .aoc-page-header {
-  margin-bottom: var(--wp--preset--spacing--50);
+  max-width: var(--wp--style--global--wide-size) !important;
+  margin-bottom: var(--wp--preset--spacing--60);
+  padding-bottom: var(--wp--preset--spacing--50) !important;
+  border-bottom: 1px solid var(--wp--preset--color--line);
+}
+.aoc-page-header.is-layout-constrained > * {
+  max-width: none;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 .aoc-page-header .wp-block-post-title {
   margin-top: 0;
   margin-bottom: 0;
+  font-size: clamp(2.8rem, 7.5vw, 6rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
 }
 .aoc-page-header .wp-block-post-excerpt {
-  margin-top: 1rem;
+  margin-top: var(--wp--preset--spacing--40);
 }
 .aoc-page-header .wp-block-post-excerpt__excerpt {
   margin: 0;
+  max-width: 36rem;
   font-size: var(--wp--preset--font-size--large);
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--wp--preset--color--ink-soft);
 }
-.aoc-page-header::after {
-  content: "";
-  display: block;
-  width: 3rem;
-  margin-top: var(--wp--preset--spacing--40);
-  border-top: 2px solid var(--wp--preset--color--accent);
+@media (min-width: 1000px) {
+  .aoc-page-header.is-layout-constrained > .wp-block-post-excerpt {
+    margin-left: calc(var(--aoc-wide) * 5 / 12) !important;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .aoc-page-header > * {
+    animation: aoc-rise 0.9s var(--aoc-ease) both;
+  }
+  .aoc-page-header > :nth-child(2) { animation-delay: 0.08s; }
+  .aoc-page-header > :nth-child(3) { animation-delay: 0.16s; }
+}
+@keyframes aoc-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
 }
 .aoc-page-image img {
-  border-radius: var(--aoc-radius);
+  border-radius: 0;
 }
 
 /* ---------- Content ---------- */
 .wp-block-post-content > h2 {
-  margin-top: var(--wp--preset--spacing--50);
+  margin-top: var(--wp--preset--spacing--60);
+  padding-top: 1rem;
+  border-top: 1px solid var(--wp--preset--color--ink);
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+}
+.wp-block-post-content > h2:first-child {
+  margin-top: 0;
+}
+
+/* Desktop: text sits on the right-hand axis and section headings hang in
+   the left margin beside it. Wide blocks (team grid, images) still use the
+   full width. Applies to ordinary pages and posts. */
+@media (min-width: 1000px) {
+  .aoc-content.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull):not(.alignwide)),
+  .is-layout-constrained > .aoc-offset {
+    max-width: calc(var(--aoc-wide) * 7 / 12);
+    margin-left: calc((100% - var(--aoc-wide)) / 2 + var(--aoc-wide) * 5 / 12) !important;
+    margin-right: auto !important;
+  }
+  .aoc-content.is-layout-constrained > h2 {
+    float: left;
+    clear: both;
+    width: calc(var(--aoc-wide) * 5 / 12 - 3rem);
+    margin-left: calc((100% - var(--aoc-wide)) / 2) !important;
+    margin-right: 3rem !important;
+    max-width: none !important;
+  }
+  .aoc-content > h2 + * {
+    margin-top: var(--wp--preset--spacing--60);
+    padding-top: 1rem;
+    border-top: 1px solid var(--wp--preset--color--ink);
+  }
+  .aoc-content > h2:first-child + * {
+    margin-top: 0;
+  }
+  .aoc-content > .alignwide,
+  .aoc-content > .alignfull {
+    clear: both;
+  }
+  .aoc-content::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
 }
 .wp-block-post-content > h3 {
   margin-top: var(--wp--preset--spacing--40);
 }
 
-/* Card block style (Group → Styles → Card) */
+/* "Ruled" block style (Group → Styles → Ruled; slug kept as aoc-card so
+   older content keeps working): a strong rule on top, no box. */
 .is-style-aoc-card {
   position: relative;
   height: 100%;
-  padding: clamp(1.25rem, 3vw, 1.75rem);
-  border: 1px solid var(--wp--preset--color--line);
-  border-radius: var(--aoc-radius);
-  background: var(--wp--preset--color--surface);
-  transition: border-color 0.2s;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--wp--preset--color--ink);
 }
 .is-style-aoc-card > :first-child {
   margin-top: 0;
@@ -273,19 +342,19 @@ a {
 .is-style-aoc-card > * + * {
   margin-top: 0.6rem;
 }
-.is-style-aoc-card:has(h3 a):hover {
-  border-color: var(--wp--preset--color--ink-soft);
-}
-/* Whole card clickable when its heading is a link */
 .is-style-aoc-card h3 a {
   color: inherit;
   text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.35s var(--aoc-ease);
+}
+.is-style-aoc-card h3 a:hover {
+  background-size: 100% 1px;
 }
 .is-style-aoc-card h3 a::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
 }
 .aoc-card-number {
   font-family: var(--aoc-ui);
@@ -344,14 +413,25 @@ a {
 
 /* Quiet button style */
 .wp-block-button.is-style-aoc-quiet .wp-block-button__link {
-  background: transparent;
+  padding: 0.2rem 0;
+  border-radius: 0;
+  background: none;
   color: var(--wp--preset--color--ink);
-  box-shadow: inset 0 0 0 1px var(--wp--preset--color--line);
+  box-shadow: inset 0 -1px 0 currentColor;
+}
+.wp-block-button.is-style-aoc-quiet .wp-block-button__link::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 0.5rem;
+  color: var(--wp--preset--color--accent);
+  transition: transform 0.25s var(--aoc-ease);
 }
 .wp-block-button.is-style-aoc-quiet .wp-block-button__link:hover {
-  background: var(--wp--preset--color--surface);
-  color: var(--wp--preset--color--ink);
-  box-shadow: inset 0 0 0 1px var(--wp--preset--color--ink-soft);
+  background: none;
+  color: var(--wp--preset--color--accent);
+}
+.wp-block-button.is-style-aoc-quiet .wp-block-button__link:hover::after {
+  transform: translateX(4px);
 }
 
 /* Short separator style */
@@ -396,12 +476,24 @@ a {
 }
 
 /* Callout */
-.aoc-callout {
-  border-radius: var(--aoc-radius);
-  border-left: 2px solid var(--wp--preset--color--accent);
+.aoc-callout,
+.aoc-callout.has-background {
+  padding: 1.5rem 0 !important;
+  border-top: 1px solid var(--wp--preset--color--ink);
+  border-bottom: 1px solid var(--wp--preset--color--line);
+  background: none !important;
 }
 .aoc-callout > * {
   margin: 0;
+}
+.aoc-callout > .aoc-eyebrow {
+  color: var(--wp--preset--color--accent);
+}
+.aoc-callout > p:not(.aoc-eyebrow) {
+  font-family: var(--wp--preset--font-family--display);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
 }
 .aoc-callout > * + * {
   margin-top: 0.4rem;
@@ -409,52 +501,48 @@ a {
 
 /* Media & text */
 .aoc-media-text img {
-  border-radius: var(--aoc-radius);
+  border-radius: 0;
 }
 
 /* ---------- Team ---------- */
 .aoc-people {
-  gap: 2rem 2.5rem !important;
-  margin-top: var(--wp--preset--spacing--40);
-}
-.aoc-person {
-  display: grid;
-  grid-template-columns: 5.5rem minmax(0, 1fr);
-  grid-template-rows: auto auto 1fr;
-  column-gap: 1.1rem;
-  align-items: start;
+  gap: var(--wp--preset--spacing--50) 2rem !important;
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr)) !important;
+  margin-top: 0;
 }
 .aoc-person > * {
-  grid-column: 2;
   margin: 0 !important;
 }
 .aoc-person__photo {
-  grid-column: 1 !important;
-  grid-row: 1 / span 3;
-  width: 5.5rem;
   overflow: hidden;
-  border-radius: 50%;
+  margin-bottom: 1rem !important;
   background: var(--wp--preset--color--tint);
 }
 .aoc-person__photo img {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 4 / 5 !important;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.6s var(--aoc-ease), transform 0.8s var(--aoc-ease);
+}
+.aoc-person:hover .aoc-person__photo img {
+  filter: none;
+  transform: scale(1.02);
 }
 .aoc-person__name {
-  padding-top: 0.35rem;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   line-height: 1.25;
 }
 .aoc-person__role {
-  margin-top: 0.2rem !important;
+  margin-top: 0.15rem !important;
   font-family: var(--aoc-ui);
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--wp--preset--color--accent);
+  font-size: 0.85rem;
+  color: var(--wp--preset--color--ink-soft);
 }
 .aoc-person > p:not(.aoc-person__role) {
-  margin-top: 0.5rem !important;
+  margin-top: 0.75rem !important;
   font-size: 0.95rem;
   line-height: 1.55;
   color: var(--wp--preset--color--ink-soft);
@@ -530,10 +618,34 @@ a {
 
 /* ---------- Events ---------- */
 .aoc-facts {
-  margin: 1.1rem 0 !important;
-  padding: 0.9rem 0;
-  border-top: 1px solid var(--wp--preset--color--line);
-  border-bottom: 1px solid var(--wp--preset--color--line);
+  margin: 1.25rem 0 !important;
+  padding: 0;
+}
+.aoc-event {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--wp--preset--color--ink);
+}
+.aoc-event__date {
+  margin: 0;
+  font-family: var(--aoc-ui);
+  font-size: clamp(3rem, 6vw, 4.75rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+.aoc-event__date + p {
+  margin-top: 0.6rem;
+  font-family: var(--aoc-ui);
+  font-size: 0.9rem;
+  color: var(--wp--preset--color--ink-soft);
+}
+.aoc-event h2 {
+  margin-top: 0;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+.aoc-event .aoc-programme {
+  margin-top: var(--wp--preset--spacing--40);
 }
 .aoc-fact {
   margin: 0;
@@ -573,10 +685,10 @@ a {
 
 /* Search */
 .aoc-search .wp-block-search__inside-wrapper {
-  border: 1px solid var(--wp--preset--color--line);
-  border-radius: var(--aoc-radius);
-  padding: 0.25rem;
-  background: var(--wp--preset--color--surface);
+  border: 0;
+  border-bottom: 1px solid var(--wp--preset--color--ink);
+  padding: 0.25rem 0;
+  background: none;
 }
 .aoc-search .wp-block-search__input {
   border: 0;
@@ -590,25 +702,23 @@ a {
 
 /* ---------- Citation page ---------- */
 .aoc-citation-box {
-  padding: 1.25rem 1.5rem;
-  border: 1px solid var(--wp--preset--color--line);
-  border-left: 2px solid var(--wp--preset--color--accent);
-  border-radius: var(--aoc-radius);
-  background: var(--wp--preset--color--surface);
-  font-size: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--wp--preset--color--ink);
+  border-bottom: 1px solid var(--wp--preset--color--line);
+  font-size: 1.1rem;
 }
 .aoc-copy-btn {
   margin-top: 1rem;
-  padding: 0.6rem 1.1rem;
-  border: 1px solid var(--wp--preset--color--line);
-  border-radius: 4px;
-  background: var(--wp--preset--color--surface);
+  padding: 0.2rem 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: none;
   color: var(--wp--preset--color--ink);
-  font: 500 0.85rem/1.2 var(--aoc-ui);
+  font: 500 0.9rem/1.2 var(--aoc-ui);
   cursor: pointer;
 }
 .aoc-copy-btn:hover {
-  border-color: var(--wp--preset--color--ink-soft);
+  color: var(--wp--preset--color--accent);
 }
 .aoc-copy-btn.is-copied::after {
   content: " ✓ Copied";
@@ -658,4 +768,11 @@ a {
 }
 .aoc-footer__logo img {
   mix-blend-mode: multiply;
+}
+
+/* WordPress zeroes padding on nested global-padding groups, which left full-
+   width post content touching the screen edge on phones. Restore it. */
+.has-global-padding > .wp-block-post-content.alignfull.has-global-padding {
+  padding-left: var(--wp--style--root--padding-left);
+  padding-right: var(--wp--style--root--padding-right);
 }

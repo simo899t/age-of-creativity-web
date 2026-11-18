@@ -167,8 +167,8 @@ function aoc_person_block($name, $role, $bio, $img = '') {
     return '
   <!-- wp:group {"className":"aoc-person","layout":{"type":"default"}} -->
   <div class="wp-block-group aoc-person">
-    <!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"aoc-person__photo"} -->
-    <figure class="wp-block-image size-full aoc-person__photo"><img src="' . esc_url($img) . '" alt="' . esc_attr($img === get_theme_file_uri('assets/img/portrait-placeholder.svg') ? '' : $name) . '" style="aspect-ratio:1;object-fit:cover"/></figure>
+    <!-- wp:image {"aspectRatio":"4/5","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"aoc-person__photo"} -->
+    <figure class="wp-block-image size-full aoc-person__photo"><img src="' . esc_url($img) . '" alt="' . esc_attr($img === get_theme_file_uri('assets/img/portrait-placeholder.svg') ? '' : $name) . '" style="aspect-ratio:4/5;object-fit:cover"/></figure>
     <!-- /wp:image -->
     <!-- wp:heading {"level":3,"className":"aoc-person__name"} -->
     <h3 class="wp-block-heading aoc-person__name">' . esc_html($name) . '</h3>
@@ -186,8 +186,8 @@ function aoc_person_block($name, $role, $bio, $img = '') {
 
 function aoc_team_page_content() {
     $bio = 'Two or three sentences about research interests and role in the project.';
-    return '<!-- wp:group {"className":"aoc-people","layout":{"type":"grid","minimumColumnWidth":"19rem"}} -->
-<div class="wp-block-group aoc-people">'
+    return '<!-- wp:group {"align":"wide","className":"aoc-people","layout":{"type":"grid","minimumColumnWidth":"13rem"}} -->
+<div class="wp-block-group alignwide aoc-people">'
         . aoc_person_block('Name Surname', 'Principal investigator', $bio)
         . aoc_person_block('Name Surname', 'Postdoctoral researcher', $bio)
         . aoc_person_block('Name Surname', 'PhD fellow', $bio)

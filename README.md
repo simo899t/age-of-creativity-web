@@ -2,7 +2,7 @@
 
 WordPress block theme for the Age of Creativity research project.
 
-- **Front page:** an interactive timeline of creators (music, art, literature, science, 1400–1950). Each line is a life from birth to death; hovering shows who it is and their connections, clicking pins a card with details, and the field buttons and search narrow it down.
+- **Front page:** an interactive timeline of creators (music, art, literature, science, 1400–1950). Each line is a life from birth to death; hovering shows who it is and their connections, clicking shows their details and connections underneath, and the field buttons and search narrow it down.
 - **Everything else:** ordinary WordPress pages built with blocks, so anyone can edit them. The theme ships ready-made sections (team grid, publication list, report download, event, contact, highlighted note, text next to image) under the *Age of Creativity* pattern category.
 
 How to edit the site without touching code: [docs/editing-guide.md](docs/editing-guide.md).
