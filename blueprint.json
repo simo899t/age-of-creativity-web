@@ -1,0 +1,36 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "Age of Creativity",
+    "description": "Runs the Age of Creativity theme in WordPress Playground with its starter pages, menu and creators.",
+    "author": "simo899t"
+  },
+  "landingPage": "/",
+  "preferredVersions": { "php": "8.3", "wp": "latest" },
+  "features": { "networking": true },
+  "login": true,
+  "steps": [
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Age of Creativity",
+        "blogdescription": "How does creativity evolve across the life course?",
+        "permalink_structure": "/%postname%/"
+      }
+    },
+    {
+      "step": "installTheme",
+      "themeData": {
+        "resource": "git:directory",
+        "url": "https://github.com/simo899t/age-of-creativity-web",
+        "ref": "main",
+        "path": "theme"
+      },
+      "options": { "activate": true, "targetFolderName": "age-of-creativity" }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; if (function_exists('aoc_install_starter_content')) { aoc_install_starter_content(); } flush_rewrite_rules();"
+    }
+  ]
+}

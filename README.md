@@ -7,6 +7,15 @@ WordPress block theme for the Age of Creativity research project.
 
 How to edit the site without touching code: [docs/editing-guide.md](docs/editing-guide.md).
 
+## Preview in the browser
+
+`blueprint.json` boots the theme from this repo's `main` branch in [WordPress Playground](https://wordpress.org/playground/), with the starter pages, menu and creators, and logs you in as admin. Nothing is saved between visits.
+
+- With GitHub Pages turned on (Settings → Pages → Deploy from a branch → `main`, `/ (root)`), `index.html` shows it at `https://simo899t.github.io/age-of-creativity-web/`.
+- Or open `https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/simo899t/age-of-creativity-web/main/blueprint.json` directly.
+
+Both need the repository to be public, because Playground downloads the theme from GitHub.
+
 ## Run it locally
 
 ```sh

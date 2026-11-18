@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Age of Creativity · preview</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #1d1c1a; color: #f6f3ec; font: 14px/1.4 system-ui, sans-serif; }
+    .bar { display: flex; gap: 1rem; align-items: center; justify-content: space-between; padding: .5rem 1rem; }
+    .bar a { color: #f6f3ec; }
+    iframe { display: block; width: 100%; height: calc(100% - 2.6rem); border: 0; background: #f6f3ec; }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <span><strong>Age of Creativity</strong> · live preview running in WordPress Playground. Changes are not saved.</span>
+    <a id="open" href="#" target="_blank" rel="noopener">Open full screen ↗</a>
+  </div>
+  <iframe id="wp" title="Age of Creativity preview" allow="clipboard-write"></iframe>
+  <script>
+    // Boots the real theme (from this repo's main branch) in WordPress
+    // Playground using blueprint.json, so the preview is exactly the theme a
+    // normal WordPress install runs.
+    fetch('blueprint.json')
+      .then(function (r) { return r.json(); })
+      .then(function (bp) {
+        var url = 'https://playground.wordpress.net/#' + encodeURIComponent(JSON.stringify(bp));
+        document.getElementById('wp').src = url;
+        document.getElementById('open').href = url;
+      });
+  </script>
+</body>
+</html>
