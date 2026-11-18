@@ -1,0 +1,793 @@
+{
+  "periods": [
+    {
+      "label": "Renaissance",
+      "start": 1400,
+      "end": 1600
+    },
+    {
+      "label": "Early Modern",
+      "start": 1600,
+      "end": 1750
+    },
+    {
+      "label": "Enlightenment",
+      "start": 1750,
+      "end": 1850
+    },
+    {
+      "label": "Modern",
+      "start": 1850,
+      "end": 1950
+    }
+  ],
+  "fields": [
+    {
+      "slug": "music",
+      "name": "Music",
+      "color": "#4C5FD5",
+      "order": 1,
+      "eras": [
+        {
+          "label": "Renaissance",
+          "start": 1400,
+          "end": 1600
+        },
+        {
+          "label": "Baroque",
+          "start": 1600,
+          "end": 1750
+        },
+        {
+          "label": "Classical",
+          "start": 1750,
+          "end": 1820
+        },
+        {
+          "label": "Romantic",
+          "start": 1820,
+          "end": 1910
+        },
+        {
+          "label": "Modern",
+          "start": 1910,
+          "end": 1950
+        }
+      ]
+    },
+    {
+      "slug": "art",
+      "name": "Art",
+      "color": "#2F8F6B",
+      "order": 2,
+      "eras": [
+        {
+          "label": "Renaissance",
+          "start": 1400,
+          "end": 1520
+        },
+        {
+          "label": "Mannerism",
+          "start": 1520,
+          "end": 1600
+        },
+        {
+          "label": "Baroque",
+          "start": 1600,
+          "end": 1750
+        },
+        {
+          "label": "Neoclassicism & Romanticism",
+          "start": 1750,
+          "end": 1850
+        },
+        {
+          "label": "Impressionism & Modern",
+          "start": 1850,
+          "end": 1950
+        }
+      ]
+    },
+    {
+      "slug": "literature",
+      "name": "Literature",
+      "color": "#C2405A",
+      "order": 3,
+      "eras": [
+        {
+          "label": "Renaissance",
+          "start": 1400,
+          "end": 1660
+        },
+        {
+          "label": "Augustan / Neoclassical",
+          "start": 1660,
+          "end": 1798
+        },
+        {
+          "label": "Romanticism",
+          "start": 1798,
+          "end": 1837
+        },
+        {
+          "label": "Victorian",
+          "start": 1837,
+          "end": 1901
+        },
+        {
+          "label": "Modernism",
+          "start": 1901,
+          "end": 1950
+        }
+      ]
+    },
+    {
+      "slug": "science",
+      "name": "Science",
+      "color": "#C08414",
+      "order": 4,
+      "eras": [
+        {
+          "label": "Early Science",
+          "start": 1400,
+          "end": 1543
+        },
+        {
+          "label": "Scientific Revolution",
+          "start": 1543,
+          "end": 1687
+        },
+        {
+          "label": "Enlightenment",
+          "start": 1687,
+          "end": 1800
+        },
+        {
+          "label": "Industrial / 19th C.",
+          "start": 1800,
+          "end": 1900
+        },
+        {
+          "label": "Quantum & Relativity",
+          "start": 1900,
+          "end": 1950
+        }
+      ]
+    }
+  ],
+  "creators": [
+    {
+      "slug": "josquin",
+      "name": "Josquin des Prez",
+      "born": 1450,
+      "died": 1521,
+      "field": "music",
+      "description": "Master of early polyphony; heavily patronized by Italian courts.",
+      "connections": [
+        "palestrina",
+        "byrd"
+      ]
+    },
+    {
+      "slug": "palestrina",
+      "name": "Giovanni Palestrina",
+      "born": 1525,
+      "died": 1594,
+      "field": "music",
+      "description": "Saved church polyphony; ultimate Roman patronage.",
+      "connections": [
+        "josquin",
+        "byrd",
+        "bach"
+      ]
+    },
+    {
+      "slug": "byrd",
+      "name": "William Byrd",
+      "born": 1543,
+      "died": 1623,
+      "field": "music",
+      "description": "Catholic composer producing profound late works under Queen Elizabeth I.",
+      "connections": [
+        "palestrina",
+        "monteverdi"
+      ]
+    },
+    {
+      "slug": "monteverdi",
+      "name": "Claudio Monteverdi",
+      "born": 1567,
+      "died": 1643,
+      "field": "music",
+      "description": "Pioneered opera; late-life shift in style while at St. Mark's.",
+      "connections": [
+        "byrd",
+        "schutz"
+      ]
+    },
+    {
+      "slug": "schutz",
+      "name": "Heinrich Schütz",
+      "born": 1585,
+      "died": 1672,
+      "field": "music",
+      "description": "Adapted Venetian styles for German courts; composed well into his 80s.",
+      "connections": [
+        "monteverdi",
+        "bach"
+      ]
+    },
+    {
+      "slug": "bach",
+      "name": "J.S. Bach",
+      "born": 1685,
+      "died": 1750,
+      "field": "music",
+      "description": "Late-life contrapuntal mastery (Art of Fugue) mostly ignored by contemporaries.",
+      "connections": [
+        "palestrina",
+        "schutz",
+        "handel",
+        "mozart"
+      ]
+    },
+    {
+      "slug": "handel",
+      "name": "George Frideric Handel",
+      "born": 1685,
+      "died": 1759,
+      "field": "music",
+      "description": "Reinvented his career in his 50s, pivoting from Italian opera to English oratorio.",
+      "connections": [
+        "bach",
+        "haydn"
+      ]
+    },
+    {
+      "slug": "haydn",
+      "name": "Joseph Haydn",
+      "born": 1732,
+      "died": 1809,
+      "field": "music",
+      "description": "Thrived under the Esterházy family; late triumphant symphonies composed for London.",
+      "connections": [
+        "handel",
+        "mozart",
+        "beethoven"
+      ]
+    },
+    {
+      "slug": "mozart",
+      "name": "W.A. Mozart",
+      "born": 1756,
+      "died": 1791,
+      "field": "music",
+      "description": "Struggled with the transition from court patronage to a freelance career.",
+      "connections": [
+        "bach",
+        "haydn",
+        "beethoven"
+      ]
+    },
+    {
+      "slug": "beethoven",
+      "name": "Ludwig van Beethoven",
+      "born": 1770,
+      "died": 1827,
+      "field": "music",
+      "description": "Profoundly radical late string quartets composed while completely deaf.",
+      "connections": [
+        "haydn",
+        "mozart",
+        "schubert",
+        "wagner"
+      ]
+    },
+    {
+      "slug": "schubert",
+      "name": "Franz Schubert",
+      "born": 1797,
+      "died": 1828,
+      "field": "music",
+      "description": "Supported by a tight-knit network of friends rather than noble patrons.",
+      "connections": [
+        "beethoven",
+        "chopin",
+        "brahms"
+      ]
+    },
+    {
+      "slug": "chopin",
+      "name": "Frédéric Chopin",
+      "born": 1810,
+      "died": 1849,
+      "field": "music",
+      "description": "Revolutionized the piano; thrived in Parisian salons rather than concert halls.",
+      "connections": [
+        "schubert",
+        "wagner"
+      ]
+    },
+    {
+      "slug": "wagner",
+      "name": "Richard Wagner",
+      "born": 1813,
+      "died": 1883,
+      "field": "music",
+      "description": "Secured massive funding to build his own opera house for his final masterpieces.",
+      "connections": [
+        "beethoven",
+        "chopin",
+        "debussy"
+      ]
+    },
+    {
+      "slug": "brahms",
+      "name": "Johannes Brahms",
+      "born": 1833,
+      "died": 1897,
+      "field": "music",
+      "description": "Champion of absolute music; late clarinet works show deep autumnal reflection.",
+      "connections": [
+        "schubert",
+        "beethoven",
+        "debussy"
+      ]
+    },
+    {
+      "slug": "debussy",
+      "name": "Claude Debussy",
+      "born": 1862,
+      "died": 1918,
+      "field": "music",
+      "description": "Pioneered musical Impressionism, breaking traditional harmonic rules.",
+      "connections": [
+        "wagner",
+        "brahms",
+        "stravinsky"
+      ]
+    },
+    {
+      "slug": "stravinsky",
+      "name": "Igor Stravinsky",
+      "born": 1882,
+      "died": 1971,
+      "field": "music",
+      "description": "Constantly reinvented himself, turning to serialism in his 70s.",
+      "connections": [
+        "debussy"
+      ]
+    },
+    {
+      "slug": "davinci",
+      "name": "Leonardo da Vinci",
+      "born": 1452,
+      "died": 1519,
+      "field": "art",
+      "description": "Spent his final years under the patronage of King Francis I of France.",
+      "connections": [
+        "michelangelo",
+        "raphael"
+      ]
+    },
+    {
+      "slug": "michelangelo",
+      "name": "Michelangelo",
+      "born": 1475,
+      "died": 1564,
+      "field": "art",
+      "description": "Late-life architectural genius; obsessed with mortality in his final sculptures.",
+      "connections": [
+        "davinci",
+        "raphael",
+        "titian"
+      ]
+    },
+    {
+      "slug": "raphael",
+      "name": "Raphael",
+      "born": 1483,
+      "died": 1520,
+      "field": "art",
+      "description": "Managed a massive, highly organized workshop serving the Vatican.",
+      "connections": [
+        "davinci",
+        "michelangelo"
+      ]
+    },
+    {
+      "slug": "titian",
+      "name": "Titian",
+      "born": 1488,
+      "died": 1576,
+      "field": "art",
+      "description": "Late works featured loose, expressive brushstrokes that anticipated modern art.",
+      "connections": [
+        "michelangelo",
+        "rubens"
+      ]
+    },
+    {
+      "slug": "caravaggio",
+      "name": "Caravaggio",
+      "born": 1571,
+      "died": 1610,
+      "field": "art",
+      "description": "Revolutionary use of light; life ended in exile despite powerful Roman patrons.",
+      "connections": [
+        "rubens",
+        "gentileschi"
+      ]
+    },
+    {
+      "slug": "rubens",
+      "name": "Peter Paul Rubens",
+      "born": 1577,
+      "died": 1640,
+      "field": "art",
+      "description": "Highly successful artist-diplomat connected to royal courts across Europe.",
+      "connections": [
+        "titian",
+        "caravaggio",
+        "velazquez"
+      ]
+    },
+    {
+      "slug": "gentileschi",
+      "name": "Artemisia Gentileschi",
+      "born": 1593,
+      "died": 1656,
+      "field": "art",
+      "description": "First woman to become a member of the Accademia di Arte del Disegno.",
+      "connections": [
+        "caravaggio"
+      ]
+    },
+    {
+      "slug": "velazquez",
+      "name": "Diego Velázquez",
+      "born": 1599,
+      "died": 1660,
+      "field": "art",
+      "description": "Leading artist in the court of King Philip IV; painted Las Meninas late in life.",
+      "connections": [
+        "rubens",
+        "goya"
+      ]
+    },
+    {
+      "slug": "rembrandt",
+      "name": "Rembrandt van Rijn",
+      "born": 1606,
+      "died": 1669,
+      "field": "art",
+      "description": "Deeply introspective, unsparing late self-portraits painted while bankrupt.",
+      "connections": [
+        "goya"
+      ]
+    },
+    {
+      "slug": "goya",
+      "name": "Francisco Goya",
+      "born": 1746,
+      "died": 1828,
+      "field": "art",
+      "description": "Deaf and disillusioned, he painted the terrifying \"Black Paintings\" in private.",
+      "connections": [
+        "velazquez",
+        "rembrandt",
+        "turner"
+      ]
+    },
+    {
+      "slug": "turner",
+      "name": "J.M.W. Turner",
+      "born": 1775,
+      "died": 1851,
+      "field": "art",
+      "description": "Late landscapes dissolved into pure light and color, shocking critics.",
+      "connections": [
+        "goya",
+        "monet"
+      ]
+    },
+    {
+      "slug": "cezanne",
+      "name": "Paul Cézanne",
+      "born": 1839,
+      "died": 1906,
+      "field": "art",
+      "description": "Late geometric landscapes laid the absolute foundation for Cubism.",
+      "connections": [
+        "monet",
+        "picasso"
+      ]
+    },
+    {
+      "slug": "monet",
+      "name": "Claude Monet",
+      "born": 1840,
+      "died": 1926,
+      "field": "art",
+      "description": "Painted monumental Water Lilies while struggling with cataracts in old age.",
+      "connections": [
+        "turner",
+        "cezanne",
+        "vangogh"
+      ]
+    },
+    {
+      "slug": "vangogh",
+      "name": "Vincent van Gogh",
+      "born": 1853,
+      "died": 1890,
+      "field": "art",
+      "description": "Produced his most famous, emotionally charged works in his final years.",
+      "connections": [
+        "monet",
+        "picasso"
+      ]
+    },
+    {
+      "slug": "picasso",
+      "name": "Pablo Picasso",
+      "born": 1881,
+      "died": 1973,
+      "field": "art",
+      "description": "Maintained relentless creative output and stylistic shifts well into his 80s.",
+      "connections": [
+        "cezanne",
+        "vangogh"
+      ]
+    },
+    {
+      "slug": "shakespeare",
+      "name": "William Shakespeare",
+      "born": 1564,
+      "died": 1616,
+      "field": "literature",
+      "description": "Shifted to complex, tragicomic romances like The Tempest in his later years.",
+      "connections": [
+        "cervantes",
+        "milton"
+      ]
+    },
+    {
+      "slug": "cervantes",
+      "name": "Miguel de Cervantes",
+      "born": 1547,
+      "died": 1616,
+      "field": "literature",
+      "description": "Published Don Quixote in his late 50s after years of slavery and poverty.",
+      "connections": [
+        "shakespeare"
+      ]
+    },
+    {
+      "slug": "milton",
+      "name": "John Milton",
+      "born": 1608,
+      "died": 1674,
+      "field": "literature",
+      "description": "Composed Paradise Lost entirely through dictation after going completely blind.",
+      "connections": [
+        "shakespeare",
+        "swift"
+      ]
+    },
+    {
+      "slug": "swift",
+      "name": "Jonathan Swift",
+      "born": 1667,
+      "died": 1745,
+      "field": "literature",
+      "description": "Wrote Gulliver's Travels as a biting late-life satire of human nature.",
+      "connections": [
+        "milton",
+        "goethe"
+      ]
+    },
+    {
+      "slug": "goethe",
+      "name": "Johann Wolfgang von Goethe",
+      "born": 1749,
+      "died": 1832,
+      "field": "literature",
+      "description": "Completed Faust, his magnum opus, shortly before his death at age 82.",
+      "connections": [
+        "swift",
+        "dickens"
+      ]
+    },
+    {
+      "slug": "austen",
+      "name": "Jane Austen",
+      "born": 1775,
+      "died": 1817,
+      "field": "literature",
+      "description": "Refined the English novel with brilliant social commentary and realism.",
+      "connections": [
+        "dickens"
+      ]
+    },
+    {
+      "slug": "dickens",
+      "name": "Charles Dickens",
+      "born": 1812,
+      "died": 1870,
+      "field": "literature",
+      "description": "Later novels like Bleak House became significantly darker and more complex.",
+      "connections": [
+        "goethe",
+        "austen",
+        "dostoevsky"
+      ]
+    },
+    {
+      "slug": "dostoevsky",
+      "name": "Fyodor Dostoevsky",
+      "born": 1821,
+      "died": 1881,
+      "field": "literature",
+      "description": "Wrote The Brothers Karamazov as a deeply philosophical culmination of his life.",
+      "connections": [
+        "dickens",
+        "tolstoy"
+      ]
+    },
+    {
+      "slug": "tolstoy",
+      "name": "Leo Tolstoy",
+      "born": 1828,
+      "died": 1910,
+      "field": "literature",
+      "description": "Experienced a profound late-life spiritual awakening, rejecting his earlier masterpieces.",
+      "connections": [
+        "dostoevsky",
+        "twain"
+      ]
+    },
+    {
+      "slug": "twain",
+      "name": "Mark Twain",
+      "born": 1835,
+      "died": 1910,
+      "field": "literature",
+      "description": "Late writings turned deeply cynical and pessimistic following personal tragedies.",
+      "connections": [
+        "tolstoy"
+      ]
+    },
+    {
+      "slug": "woolf",
+      "name": "Virginia Woolf",
+      "born": 1882,
+      "died": 1941,
+      "field": "literature",
+      "description": "Pioneered stream-of-consciousness narrative, pushing literary boundaries.",
+      "connections": []
+    },
+    {
+      "slug": "copernicus",
+      "name": "Nicolaus Copernicus",
+      "born": 1473,
+      "died": 1543,
+      "field": "science",
+      "description": "Published his heliocentric theory on his deathbed to avoid church backlash.",
+      "connections": [
+        "galileo",
+        "kepler"
+      ]
+    },
+    {
+      "slug": "galileo",
+      "name": "Galileo Galilei",
+      "born": 1564,
+      "died": 1642,
+      "field": "science",
+      "description": "Spent his late life under house arrest, yet still produced foundational physics texts.",
+      "connections": [
+        "copernicus",
+        "kepler",
+        "newton"
+      ]
+    },
+    {
+      "slug": "kepler",
+      "name": "Johannes Kepler",
+      "born": 1571,
+      "died": 1630,
+      "field": "science",
+      "description": "Struggled constantly for funding, serving as Imperial Mathematician.",
+      "connections": [
+        "copernicus",
+        "galileo",
+        "descartes"
+      ]
+    },
+    {
+      "slug": "descartes",
+      "name": "René Descartes",
+      "born": 1596,
+      "died": 1650,
+      "field": "science",
+      "description": "Died in Sweden after being employed to tutor Queen Christina at 5 AM daily.",
+      "connections": [
+        "kepler",
+        "newton",
+        "leibniz"
+      ]
+    },
+    {
+      "slug": "newton",
+      "name": "Isaac Newton",
+      "born": 1642,
+      "died": 1727,
+      "field": "science",
+      "description": "Shifted from scientific research to theology and running the Royal Mint in later life.",
+      "connections": [
+        "galileo",
+        "descartes",
+        "leibniz"
+      ]
+    },
+    {
+      "slug": "leibniz",
+      "name": "Gottfried Wilhelm Leibniz",
+      "born": 1646,
+      "died": 1716,
+      "field": "science",
+      "description": "Polymath who died out of favor after disputes with Newton over calculus.",
+      "connections": [
+        "descartes",
+        "newton"
+      ]
+    },
+    {
+      "slug": "darwin",
+      "name": "Charles Darwin",
+      "born": 1809,
+      "died": 1882,
+      "field": "science",
+      "description": "Spent decades meticulously refining evolutionary theory before publishing.",
+      "connections": [
+        "maxwell"
+      ]
+    },
+    {
+      "slug": "maxwell",
+      "name": "James Clerk Maxwell",
+      "born": 1831,
+      "died": 1879,
+      "field": "science",
+      "description": "Formulated the classical theory of electromagnetic radiation.",
+      "connections": [
+        "darwin",
+        "einstein"
+      ]
+    },
+    {
+      "slug": "curie",
+      "name": "Marie Curie",
+      "born": 1867,
+      "died": 1934,
+      "field": "science",
+      "description": "Pioneered radioactivity research; the first person to win two Nobel Prizes.",
+      "connections": [
+        "einstein"
+      ]
+    },
+    {
+      "slug": "einstein",
+      "name": "Albert Einstein",
+      "born": 1879,
+      "died": 1955,
+      "field": "science",
+      "description": "Spent his later decades on a unified field theory, isolated from quantum mechanics.",
+      "connections": [
+        "maxwell",
+        "curie"
+      ]
+    }
+  ]
+}

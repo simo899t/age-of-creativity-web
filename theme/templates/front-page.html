@@ -1,22 +1,15 @@
-<!-- wp:group {"tagName":"section","className":"aoc-hero-banner","layout":{"type":"default"}} -->
-<section class="wp-block-group aoc-hero-banner">
-  <!-- wp:post-featured-image /-->
+<!-- wp:template-part {"slug":"header","area":"header","tagName":"header"} /-->
 
-  <!-- wp:group {"className":"aoc-hero-card","layout":{"type":"default"}} -->
-  <div class="wp-block-group aoc-hero-card">
-    <!-- wp:post-title {"level":1,"className":"aoc-hero-title"} /-->
-    <!-- wp:post-excerpt {"className":"aoc-hero-subtitle","showMoreOnNewLine":false} /-->
-  </div>
+<!-- wp:group {"tagName":"main","className":"aoc-home","style":{"spacing":{"margin":{"top":"0"},"blockGap":"0"}},"layout":{"type":"default"}} -->
+<main class="wp-block-group aoc-home" style="margin-top:0">
+  <!-- wp:group {"tagName":"section","className":"aoc-hero","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained","contentSize":"88rem"}} -->
+  <section class="wp-block-group alignfull aoc-hero" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)">
+    <!-- wp:aoc/timeline {"align":"wide"} /-->
+  </section>
   <!-- /wp:group -->
-</section>
-<!-- /wp:group -->
 
-<!-- wp:template-part {"slug":"local-nav","area":"uncategorized"} /-->
-
-<!-- wp:group {"className":"aoc-home-body","layout":{"type":"default"}} -->
-<div class="wp-block-group aoc-home-body">
-  <!-- wp:post-content /-->
-</div>
+  <!-- wp:post-content {"align":"full","className":"aoc-home-content","layout":{"type":"default"}} /-->
+</main>
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->

@@ -1,7 +1,10 @@
 /*
 Theme Name: Age of Creativity
-Description: Block theme for publishing Age of Creativity research results.
-Version: 0.1.0
-Requires at least: 6.4
+Description: Block theme for the Age of Creativity research project. The front page shows an interactive timeline of creators (edited under Creators in the dashboard); every other page is an ordinary page built with blocks.
+Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 6.8
 Requires PHP: 8.0
+License: GNU General Public License v2 or later
+Text Domain: aoc
 */

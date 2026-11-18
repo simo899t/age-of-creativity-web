@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aoc/timeline",
+  "title": "Creators timeline",
+  "category": "widgets",
+  "icon": "chart-line",
+  "description": "The interactive timeline of creators. People, fields and eras are edited under Creators in the dashboard.",
+  "keywords": ["timeline", "creators", "age of creativity"],
+  "textdomain": "aoc",
+  "attributes": {
+    "kicker": { "type": "string", "default": "A research project" },
+    "showTitle": { "type": "boolean", "default": true },
+    "hint": {
+      "type": "string",
+      "default": "Each line is a life, from birth to death. Point at one to see who it is, or select it to read more."
+    }
+  },
+  "supports": {
+    "html": false,
+    "multiple": false,
+    "align": ["wide", "full"]
+  },
+  "editorScript": "file:./editor.js",
+  "style": "file:./style.css",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}
