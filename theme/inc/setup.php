@@ -29,7 +29,7 @@ add_action('init', function () {
     ]);
     register_block_style('core/group', [
         'name'  => 'aoc-card',
-        'label' => __('Card', 'aoc'),
+        'label' => __('Ruled', 'aoc'),
     ]);
     register_block_style('core/list', [
         'name'  => 'aoc-plain',

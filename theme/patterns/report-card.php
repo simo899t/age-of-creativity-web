@@ -4,7 +4,7 @@
  * Slug: aoc/report-card
  * Categories: aoc
  * Keywords: report, download, pdf, file, working paper
- * Description: A card with a report's title, date, short summary and a download button. Click the button and pick "Link" to choose a PDF from the Media Library.
+ * Description: A ruled entry with a report's title, date, short summary and a download button. Click the button and pick "Link" to choose a PDF from the Media Library.
  */
 ?>
 <!-- wp:group {"className":"is-style-aoc-card aoc-report","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"layout":{"type":"default"}} -->
@@ -20,8 +20,8 @@
   <!-- /wp:paragraph -->
   <!-- wp:buttons -->
   <div class="wp-block-buttons">
-    <!-- wp:button -->
-    <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url(get_theme_file_uri('assets/downloads/age-of-creativity-report.pdf')); ?>">Download PDF</a></div>
+    <!-- wp:button {"className":"is-style-aoc-quiet"} -->
+    <div class="wp-block-button is-style-aoc-quiet"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url(get_theme_file_uri('assets/downloads/age-of-creativity-report.pdf')); ?>">Download PDF</a></div>
     <!-- /wp:button -->
   </div>
   <!-- /wp:buttons -->

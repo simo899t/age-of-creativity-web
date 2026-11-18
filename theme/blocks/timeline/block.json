@@ -13,7 +13,7 @@
     "showTitle": { "type": "boolean", "default": true },
     "hint": {
       "type": "string",
-      "default": "Each line is a life, from birth to death. Point at one to see who it is, or select it to read more."
+      "default": "Point at a line to see who it is; select it for details."
     }
   },
   "supports": {
