@@ -6,34 +6,45 @@
   --aoc-paper: var(--wp--preset--color--paper, #f6f3ec);
   --aoc-surface: var(--wp--preset--color--surface, #fff);
   --aoc-ui-font: var(--wp--preset--font-family--ui, system-ui, sans-serif);
+  --aoc-display: var(--wp--preset--font-family--display, Georgia, serif);
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
   color: var(--aoc-ink);
+}
+.aoc-tl .screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ---------- Intro ---------- */
 .aoc-tl-intro {
   text-align: center;
   max-width: 54rem;
-  margin: 0 auto clamp(1.75rem, 4vw, 3rem);
+  margin: 0 auto clamp(2rem, 5vw, 3.5rem);
   padding: 0 1rem;
 }
 .aoc-tl-kicker {
-  margin: 0 0 1rem;
-  font-family: var(--aoc-ui-font);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  margin: 0 0 1.1rem;
+  font: 500 0.75rem/1.2 var(--aoc-ui-font);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--aoc-soft);
 }
 .aoc-tl-title {
   margin: 0;
-  font-family: var(--wp--preset--font-family--display, Georgia, serif);
-  font-size: clamp(3rem, 9.5vw, 7.5rem);
-  font-weight: 380;
-  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-family: var(--aoc-display);
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 360;
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
   line-height: 0.95;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 .aoc-tl-title em {
   font-style: italic;
@@ -42,9 +53,9 @@
   padding: 0 0.04em;
 }
 .aoc-tl-question {
-  margin: 1.25rem auto 0;
+  margin: 1.4rem auto 0;
   max-width: 36rem;
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
   font-style: italic;
   color: var(--aoc-soft);
   line-height: 1.45;
@@ -52,97 +63,143 @@
 
 /* ---------- Toolbar ---------- */
 .aoc-tl-toolbar {
+  position: relative;
+  z-index: 5;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem 1.5rem;
-  margin-bottom: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--aoc-line);
   font-family: var(--aoc-ui-font);
-  position: relative;
-  z-index: 5;
 }
 .aoc-tl-fields {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.15rem 1.1rem;
 }
 .aoc-tl-field {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.42rem 0.8rem;
-  border: 1px solid var(--aoc-line);
-  border-radius: 999px;
-  background: var(--aoc-surface);
-  color: var(--aoc-ink);
-  font: 500 0.85rem/1.2 var(--aoc-ui-font);
+  padding: 0.35rem 0;
+  border: 0;
+  border-bottom: 1.5px solid transparent;
+  background: none;
+  color: var(--aoc-soft);
+  font: 500 0.875rem/1.2 var(--aoc-ui-font);
   cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  transition: color 0.2s, border-color 0.2s;
 }
 .aoc-tl-field:hover {
-  border-color: var(--aoc-soft);
+  color: var(--aoc-ink);
 }
 .aoc-tl-field[aria-pressed="true"] {
-  background: var(--aoc-ink);
-  border-color: var(--aoc-ink);
-  color: var(--aoc-paper);
-}
-.aoc-tl-field[data-field]:not([data-field=""])[aria-pressed="true"] {
-  background: var(--aoc-field);
-  border-color: var(--aoc-field);
-  color: #fff;
+  color: var(--aoc-ink);
+  border-bottom-color: var(--aoc-field, var(--aoc-ink));
 }
 .aoc-tl-swatch {
-  width: 0.6rem;
-  height: 0.6rem;
+  width: 0.55rem;
+  height: 0.55rem;
   border-radius: 50%;
   background: var(--aoc-field);
 }
-.aoc-tl-field[aria-pressed="true"] .aoc-tl-swatch {
-  background: #fff;
-}
 .aoc-tl-count {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-variant-numeric: tabular-nums;
-  opacity: 0.6;
+  color: var(--aoc-soft);
+  opacity: 0.75;
 }
 .aoc-tl-search {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  min-width: min(100%, 17rem);
-  padding: 0.42rem 0.9rem;
-  border: 1px solid var(--aoc-line);
-  border-radius: 999px;
-  background: var(--aoc-surface);
+  min-width: min(100%, 16rem);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid transparent;
   color: var(--aoc-soft);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s;
 }
 .aoc-tl-search:focus-within {
-  border-color: var(--aoc-ink);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aoc-ink) 12%, transparent);
+  border-bottom-color: var(--aoc-ink);
 }
 .aoc-tl-search input {
   flex: 1;
   min-width: 0;
+  padding: 0;
   border: 0;
   outline: 0;
   background: transparent;
   color: var(--aoc-ink);
-  font: 400 0.9rem/1.2 var(--aoc-ui-font);
+  font: 400 0.875rem/1.2 var(--aoc-ui-font);
+}
+.aoc-tl-search input::placeholder {
+  color: var(--aoc-soft);
+  opacity: 0.8;
 }
 .aoc-tl.has-no-match .aoc-tl-search {
-  border-color: #b4472e;
+  border-bottom-color: #b4472e;
+}
+
+/* ---------- Hover read-out (replaces a floating tooltip) ---------- */
+.aoc-tl-readout {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  height: 2.6rem;
+  padding-top: 0.85rem;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity 0.18s, transform 0.25s var(--ease);
+  pointer-events: none;
+}
+.aoc-tl-readout.is-on {
+  opacity: 1;
+  transform: none;
+}
+.aoc-tl-readout-dot {
+  align-self: center;
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--c);
+}
+.aoc-tl-readout-name {
+  flex: none;
+  font-family: var(--aoc-display);
+  font-size: 1.2rem;
+  font-weight: 450;
+  font-variation-settings: "opsz" 36;
+}
+.aoc-tl-readout-meta {
+  flex: none;
+  font: 500 0.75rem/1 var(--aoc-ui-font);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--aoc-soft);
+}
+.aoc-tl-readout-desc {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--aoc-soft);
 }
 
 /* ---------- Stage ---------- */
 .aoc-tl-stage {
   position: relative;
   overflow-x: auto;
-  overflow-y: visible;
-  padding-top: 5rem; /* room for tooltips and connection arcs */
-  margin-top: -4rem;
+  overflow-y: hidden;
+  padding-top: 4.5rem; /* room for connection arcs above the top row */
+  margin-top: -4.5rem;
   scrollbar-width: thin;
 }
 .aoc-tl-canvas {
@@ -161,23 +218,21 @@
 
 .aoc-tl-plot {
   position: relative;
-  transition: height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--aoc-line) 0 1px,
-    transparent 1px var(--grid-step, 100px)
-  );
-  background-position: var(--grid-start, 0) 0;
-  background-repeat: no-repeat;
-  background-size: calc(100% - var(--grid-start, 0px)) 100%;
-  background-blend-mode: normal;
+  transition: height 0.5s var(--ease);
 }
-/* Fade the grid so it reads as a guide, not a fence. */
+/* Century gridlines, very faint */
 .aoc-tl-plot::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(var(--aoc-paper), color-mix(in srgb, var(--aoc-paper) 55%, transparent) 30%, color-mix(in srgb, var(--aoc-paper) 55%, transparent));
+  top: 0;
+  bottom: 0;
+  left: var(--grid-start, 0);
+  right: var(--grid-end, 0);
+  background-image: repeating-linear-gradient(
+    to right,
+    color-mix(in srgb, var(--aoc-line) 70%, transparent) 0 1px,
+    transparent 1px var(--grid-step, 100px)
+  );
   pointer-events: none;
 }
 
@@ -188,37 +243,91 @@
 }
 .aoc-tl-band {
   position: absolute;
-  left: 0;
   right: 0;
-  border-left: 2px solid var(--c, var(--aoc-line));
+}
+.aoc-tl-band + .aoc-tl-band::before {
+  /* hairline between fields */
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -112px;
+  right: 0;
+  border-top: 1px dotted var(--aoc-line);
 }
 .aoc-tl-band-label {
   position: absolute;
-  left: 0.6rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font: 600 0.68rem/1 var(--aoc-ui-font);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--c, var(--aoc-soft));
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font: 500 0.78rem/1 var(--aoc-ui-font);
+  color: var(--aoc-ink);
+  transition: opacity 0.25s;
+}
+.aoc-tl-band-dot {
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--c);
+}
+.aoc-tl-band-count {
+  font-size: 0.7rem;
+  color: var(--aoc-soft);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+.aoc-tl.has-active .aoc-tl-band-label {
+  opacity: 0.45;
 }
 
+/* ---------- Connection arcs ---------- */
 .aoc-tl-links {
   position: absolute;
   left: 0;
   top: 0;
+  z-index: 3;
   overflow: visible;
   pointer-events: none;
-  z-index: 3;
 }
-.aoc-tl-links path {
+.aoc-tl-arc {
   fill: none;
-  stroke-width: 1.5;
-  stroke-dasharray: 3 4;
-  opacity: 0.85;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+.aoc-tl-node {
+  stroke: var(--aoc-paper);
+  stroke-width: 2;
 }
 
-/* A life: name above, bar from birth to death. */
+/* Name tags on connected people (compact view) */
+.aoc-tl-tags {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.aoc-tl-tag {
+  position: absolute;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--aoc-paper) 88%, transparent);
+  font: 500 11.5px/18px var(--aoc-ui-font);
+  white-space: nowrap;
+  color: var(--aoc-soft);
+  animation: aoc-tl-fade 0.3s var(--ease) both;
+}
+.aoc-tl-tag.is-source {
+  color: var(--aoc-ink);
+  font-weight: 600;
+}
+@keyframes aoc-tl-fade {
+  from { opacity: 0; transform: translateY(3px); }
+}
+
+/* ---------- A life: name above, bar from birth to death ---------- */
 .aoc-tl-life {
   position: absolute;
   z-index: 2;
@@ -232,10 +341,10 @@
   text-align: left;
   cursor: pointer;
   transition:
-    left 0.6s cubic-bezier(0.25, 1, 0.5, 1),
-    top 0.6s cubic-bezier(0.25, 1, 0.5, 1),
-    width 0.6s cubic-bezier(0.25, 1, 0.5, 1),
-    opacity 0.35s ease;
+    left 0.6s var(--ease),
+    top 0.6s var(--ease),
+    width 0.6s var(--ease),
+    opacity 0.3s ease;
 }
 .aoc-tl-life:focus {
   outline: none;
@@ -247,46 +356,29 @@
 .aoc-tl-name {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 2px;
   white-space: nowrap;
   font: 500 12.5px/16px var(--aoc-ui-font);
-  color: var(--aoc-ink);
+  color: var(--aoc-soft);
   transition: opacity 0.25s, color 0.25s;
 }
 .aoc-tl-bar {
   position: absolute;
   left: 0;
   right: 0;
-  top: 21px;
-  height: 5px;
-  margin-top: -2.5px;
-  border-radius: 3px;
+  top: 22px;
+  height: 3px;
+  margin-top: -1.5px;
+  border-radius: 2px;
   background: var(--c);
-  opacity: 0.72;
+  opacity: 0.6;
   transform-origin: left center;
-  transition: opacity 0.25s, transform 0.25s, height 0.2s, margin 0.2s;
-}
-/* Birth marker */
-.aoc-tl-bar::before {
-  content: "";
-  position: absolute;
-  left: -1px;
-  top: 50%;
-  width: 9px;
-  height: 9px;
-  margin-top: -4.5px;
-  border-radius: 50%;
-  background: var(--c);
-  box-shadow: 0 0 0 2px var(--aoc-paper);
+  transition: opacity 0.25s, height 0.2s, margin 0.2s;
 }
 .aoc-tl-life.is-cut .aoc-tl-bar {
   -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
   mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
 }
-.aoc-tl-life.is-cut .aoc-tl-bar::before {
-  /* the mask would hide nothing at the start, keep the dot */
-}
-
 .aoc-tl-life:hover .aoc-tl-bar,
 .aoc-tl-life.is-active .aoc-tl-bar,
 .aoc-tl-life.is-selected .aoc-tl-bar,
@@ -296,14 +388,20 @@
 }
 .aoc-tl-life.is-active .aoc-tl-bar,
 .aoc-tl-life.is-selected .aoc-tl-bar {
-  height: 7px;
-  margin-top: -3.5px;
+  height: 5px;
+  margin-top: -2.5px;
+}
+.aoc-tl-life:hover .aoc-tl-name,
+.aoc-tl-life.is-active .aoc-tl-name,
+.aoc-tl-life.is-linked .aoc-tl-name,
+.aoc-tl-life.is-selected .aoc-tl-name {
+  color: var(--aoc-ink);
 }
 .aoc-tl-life.is-selected .aoc-tl-name {
-  font-weight: 700;
+  font-weight: 650;
 }
 .aoc-tl-life.is-dim {
-  opacity: 0.16;
+  opacity: 0.14;
 }
 .aoc-tl-life.is-out {
   opacity: 0;
@@ -311,77 +409,50 @@
   visibility: hidden;
 }
 
-/* Compact mode (many people): no names until hovered or linked. */
+/* Compact view (many people): lines only, names via the read-out and tags. */
 .is-compact .aoc-tl-life {
-  height: 10px;
+  height: 12px;
 }
 .is-compact .aoc-tl-bar {
-  top: 5px;
-  height: 4px;
-  margin-top: -2px;
-}
-.is-compact .aoc-tl-bar::before {
-  width: 7px;
-  height: 7px;
-  margin-top: -3.5px;
-}
-.is-compact .aoc-tl-life.is-active .aoc-tl-bar,
-.is-compact .aoc-tl-life.is-selected .aoc-tl-bar {
-  height: 6px;
-  margin-top: -3px;
+  top: 6px;
 }
 .is-compact .aoc-tl-name {
-  top: -16px;
-  opacity: 0;
-  pointer-events: none;
-  padding: 0 4px;
-  margin-left: -4px;
-  border-radius: 3px;
-  background: color-mix(in srgb, var(--aoc-paper) 85%, transparent);
-}
-.is-compact .aoc-tl-life.is-linked .aoc-tl-name,
-.is-compact .aoc-tl-life.is-selected .aoc-tl-name,
-.is-compact .aoc-tl-life.is-match .aoc-tl-name {
-  opacity: 1;
-}
-.is-compact .aoc-tl-life.is-active .aoc-tl-name {
-  opacity: 0; /* the tooltip shows it */
-}
-.is-compact .aoc-tl-life.is-selected.is-active .aoc-tl-name {
-  opacity: 1;
-}
-.is-compact .aoc-tl-life.is-linked,
-.is-compact .aoc-tl-life.is-selected,
-.is-compact .aoc-tl-life.is-match {
-  z-index: 4;
+  display: none;
 }
 
 /* ---------- Axis & eras ---------- */
 .aoc-tl-axis {
   position: relative;
-  height: 2.2rem;
-  border-top: 1px solid var(--aoc-ink);
+  height: 2rem;
   font-family: var(--aoc-ui-font);
+}
+.aoc-tl-axis::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--axis-start, 0);
+  right: var(--axis-end, 0);
+  border-top: 1px solid var(--aoc-ink);
 }
 .aoc-tl-tick {
   position: absolute;
   top: 0;
   width: 1px;
-  height: 5px;
+  height: 4px;
   background: var(--aoc-soft);
 }
 .aoc-tl-tick.is-major {
-  height: 9px;
+  height: 7px;
   background: var(--aoc-ink);
 }
 .aoc-tl-tick span {
   position: absolute;
-  top: 12px;
+  top: 11px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
   color: var(--aoc-soft);
 }
@@ -390,8 +461,7 @@
 }
 .aoc-tl-eras {
   position: relative;
-  height: 2.2rem;
-  margin-top: 0.2rem;
+  height: 1.8rem;
   font-family: var(--aoc-ui-font);
 }
 .aoc-tl-era {
@@ -399,123 +469,97 @@
   top: 0;
   height: 100%;
   padding: 0 0.5rem;
-  border-top: 1px solid var(--aoc-line);
   border-left: 1px solid var(--aoc-line);
   box-sizing: border-box;
   overflow: hidden;
 }
 .aoc-tl-era span {
   display: block;
-  padding-top: 0.45rem;
+  padding-top: 0.3rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--aoc-soft);
 }
 .aoc-tl-eras.is-field .aoc-tl-era {
-  border-top: 2px solid var(--c);
-  border-left-color: color-mix(in srgb, var(--c) 40%, transparent);
+  border-left-color: color-mix(in srgb, var(--c) 45%, transparent);
 }
-.aoc-tl-eras.is-field .aoc-tl-era:nth-child(even) {
-  background: color-mix(in srgb, var(--c) 6%, transparent);
-}
-
-/* ---------- Tooltip ---------- */
-.aoc-tl-tip {
-  position: absolute;
-  z-index: 10;
-  width: max-content;
-  max-width: 280px;
-  padding: 0.75rem 0.95rem 0.8rem;
-  border: 1px solid var(--aoc-line);
-  border-radius: 10px;
-  background: var(--aoc-surface);
-  box-shadow: 0 12px 32px -8px rgba(29, 28, 26, 0.25);
-  transform: translate(-50%, calc(-100% + 6px));
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s, transform 0.2s;
-}
-.aoc-tl-tip.is-on {
-  opacity: 1;
-  transform: translate(-50%, -100%);
-}
-.aoc-tl-tip.is-below {
-  transform: translate(-50%, -6px);
-}
-.aoc-tl-tip.is-below.is-on {
-  transform: translate(-50%, 0);
-}
-.aoc-tl-tip strong {
-  display: block;
-  font-family: var(--wp--preset--font-family--display, Georgia, serif);
-  font-size: 1.1rem;
-  font-weight: 500;
-  line-height: 1.2;
-}
-.aoc-tl-tip-meta {
-  display: block;
-  margin: 0.15rem 0 0.4rem;
-  font: 600 0.7rem/1.3 var(--aoc-ui-font);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--aoc-soft);
-}
-.aoc-tl-tip-desc {
-  display: block;
-  font-size: 0.88rem;
-  line-height: 1.45;
-  color: var(--aoc-ink);
+.aoc-tl-eras.is-field .aoc-tl-era span {
+  color: color-mix(in srgb, var(--c) 70%, var(--aoc-ink));
 }
 
-/* ---------- Detail card ---------- */
+/* ---------- Legend / detail card ---------- */
 .aoc-tl-detail {
   min-height: 3rem;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--aoc-line);
+}
+.aoc-tl-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  font: 400 0.8rem/1.4 var(--aoc-ui-font);
+  color: var(--aoc-soft);
+}
+.aoc-tl-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.aoc-tl-key svg {
+  color: var(--aoc-soft);
+}
+.aoc-tl-key-hint {
+  margin-left: auto;
 }
 .aoc-tl-hint {
   margin: 0;
-  text-align: center;
-  font: 400 0.85rem/1.5 var(--aoc-ui-font);
+  font: 400 0.8rem/1.5 var(--aoc-ui-font);
   color: var(--aoc-soft);
 }
+
 .aoc-tl-card {
   position: relative;
-  max-width: 44rem;
-  margin: 0 auto;
-  padding: 1.25rem 3rem 1.3rem 1.5rem;
-  border: 1px solid var(--aoc-line);
-  border-left: 4px solid var(--c);
-  border-radius: 10px;
-  background: var(--aoc-surface);
-  box-shadow: 0 10px 30px -18px rgba(29, 28, 26, 0.35);
-  animation: aoc-tl-rise 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.25rem 3rem;
+  padding: 0.25rem 2.5rem 0.25rem 1.1rem;
+  border-left: 2px solid var(--c);
+  animation: aoc-tl-fade 0.35s var(--ease);
 }
-@keyframes aoc-tl-rise {
-  from { opacity: 0; transform: translateY(8px); }
+.aoc-tl-card > * {
+  grid-column: 1;
+}
+.aoc-tl-card-links {
+  grid-column: 2;
+  grid-row: 1 / span 3;
 }
 .aoc-tl-card-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.25rem 0.9rem;
   margin: 0;
-  font: 600 0.72rem/1.4 var(--aoc-ui-font);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font: 500 0.75rem/1.4 var(--aoc-ui-font);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
   color: var(--aoc-soft);
 }
 .aoc-tl-card-field {
   color: var(--c);
+  font-weight: 600;
 }
 .aoc-tl-card-name {
-  margin: 0.3rem 0 0.5rem;
-  font-family: var(--wp--preset--font-family--display, Georgia, serif);
-  font-size: 1.7rem;
-  font-weight: 450;
+  margin: 0.2rem 0 0.35rem;
+  font-family: var(--aoc-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  font-variation-settings: "opsz" 72;
+  letter-spacing: -0.01em;
   line-height: 1.15;
 }
 .aoc-tl-card-desc {
@@ -523,47 +567,55 @@
   font-size: 1.02rem;
   line-height: 1.6;
 }
-.aoc-tl-card-links {
+.aoc-tl-card-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font: 500 0.75rem/1 var(--aoc-ui-font);
+  letter-spacing: 0.04em;
+  color: var(--aoc-soft);
+}
+.aoc-tl-chips {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.9rem;
-}
-.aoc-tl-card-label {
-  margin-right: 0.3rem;
-  font: 600 0.72rem/1 var(--aoc-ui-font);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--aoc-soft);
+  gap: 0.35rem 1.25rem;
 }
 .aoc-tl-chip {
   display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.28rem 0.65rem;
-  border: 1px solid var(--aoc-line);
-  border-radius: 999px;
-  background: var(--aoc-paper);
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.15rem 0;
+  border: 0;
+  background: none;
   color: var(--aoc-ink);
-  font: 500 0.8rem/1.2 var(--aoc-ui-font);
+  font: 500 0.85rem/1.3 var(--aoc-ui-font);
+  white-space: nowrap;
+  text-align: left;
   cursor: pointer;
 }
 .aoc-tl-chip::before {
   content: "";
-  width: 0.5rem;
-  height: 0.5rem;
+  flex: none;
+  align-self: center;
+  width: 0.45rem;
+  height: 0.45rem;
   border-radius: 50%;
   background: var(--c);
 }
-.aoc-tl-chip:hover,
-.aoc-tl-chip:focus-visible {
-  border-color: var(--c);
+.aoc-tl-chip-years {
+  font-size: 0.72rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: var(--aoc-soft);
+}
+.aoc-tl-chip:hover .aoc-tl-chip-name,
+.aoc-tl-chip:focus-visible .aoc-tl-chip-name {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 .aoc-tl-close {
   position: absolute;
-  top: 0.7rem;
-  right: 0.7rem;
+  top: -0.2rem;
+  right: 0;
   display: grid;
   place-items: center;
   width: 2rem;
@@ -576,8 +628,24 @@
   cursor: pointer;
 }
 .aoc-tl-close:hover {
-  background: var(--aoc-paper);
+  background: var(--wp--preset--color--tint, #ede7da);
   color: var(--aoc-ink);
+}
+@media (max-width: 781px) {
+  .aoc-tl-card {
+    grid-template-columns: 1fr;
+  }
+  .aoc-tl-card-links {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 0.9rem;
+  }
+  .aoc-tl-key-hint {
+    margin-left: 0;
+  }
+  .aoc-tl-readout-desc {
+    display: none;
+  }
 }
 
 /* ---------- Entrance ---------- */
@@ -594,21 +662,17 @@
 .aoc-tl.is-entering.is-in .aoc-tl-intro > * {
   opacity: 1;
   transform: none;
-  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: opacity 0.9s ease, transform 0.9s var(--ease);
 }
 .aoc-tl.is-entering.is-in .aoc-tl-intro > :nth-child(2) { transition-delay: 0.08s; }
 .aoc-tl.is-entering.is-in .aoc-tl-intro > :nth-child(3) { transition-delay: 0.2s; }
 .aoc-tl.is-entering.is-in .aoc-tl-bar {
   transform: none;
-  transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1) calc(0.35s + var(--i, 0) * 14ms);
+  transition: transform 0.9s var(--ease) calc(0.35s + var(--i, 0) * 14ms);
 }
 .aoc-tl.is-entering.is-in .aoc-tl-name {
   opacity: 1;
   transition: opacity 0.6s ease calc(0.6s + var(--i, 0) * 14ms);
-}
-.aoc-tl.is-entering.is-in.is-compact .aoc-tl-name,
-.aoc-tl.is-entering.is-in .is-compact .aoc-tl-name {
-  opacity: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -635,16 +699,4 @@
   margin: 0;
   font-size: 0.9rem;
   color: #50575e;
-}
-
-.aoc-tl .screen-reader-text {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }

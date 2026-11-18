@@ -161,6 +161,41 @@ function aoc_install_creators() {
     }
 }
 
+/** One team member: photo, name, role, short bio (used by the Team pattern and page). */
+function aoc_person_block($name, $role, $bio, $img = '') {
+    $img = $img ?: get_theme_file_uri('assets/img/portrait-placeholder.svg');
+    return '
+  <!-- wp:group {"className":"aoc-person","layout":{"type":"default"}} -->
+  <div class="wp-block-group aoc-person">
+    <!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"aoc-person__photo"} -->
+    <figure class="wp-block-image size-full aoc-person__photo"><img src="' . esc_url($img) . '" alt="' . esc_attr($img === get_theme_file_uri('assets/img/portrait-placeholder.svg') ? '' : $name) . '" style="aspect-ratio:1;object-fit:cover"/></figure>
+    <!-- /wp:image -->
+    <!-- wp:heading {"level":3,"className":"aoc-person__name"} -->
+    <h3 class="wp-block-heading aoc-person__name">' . esc_html($name) . '</h3>
+    <!-- /wp:heading -->
+    <!-- wp:paragraph {"className":"aoc-person__role"} -->
+    <p class="aoc-person__role">' . esc_html($role) . '</p>
+    <!-- /wp:paragraph -->
+    <!-- wp:paragraph {"className":"aoc-person__bio"} -->
+    <p class="aoc-person__bio">' . $bio . '</p>
+    <!-- /wp:paragraph -->
+  </div>
+  <!-- /wp:group -->
+';
+}
+
+function aoc_team_page_content() {
+    $bio = 'Two or three sentences about research interests and role in the project.';
+    return '<!-- wp:group {"className":"aoc-people","layout":{"type":"grid","minimumColumnWidth":"19rem"}} -->
+<div class="wp-block-group aoc-people">'
+        . aoc_person_block('Name Surname', 'Principal investigator', $bio)
+        . aoc_person_block('Name Surname', 'Postdoctoral researcher', $bio)
+        . aoc_person_block('Name Surname', 'PhD fellow', $bio)
+        . aoc_person_block('Simon Holm', 'Student assistant', 'Student assistant on the Age of Creativity project, working on the creators database and this website.', get_theme_file_uri('assets/img/team/simon.jpg'))
+        . '</div>
+<!-- /wp:group -->';
+}
+
 function aoc_block_p($text, $class = '') {
     $attrs = $class ? ' {"className":"' . $class . '"}' : '';
     $cls   = $class ? ' class="' . $class . '"' : '';
@@ -198,7 +233,7 @@ function aoc_install_pages() {
         'team' => [
             'title'   => 'Team',
             'excerpt' => 'The researchers behind Age of Creativity.',
-            'content' => aoc_render_pattern('team-grid'),
+            'content' => aoc_team_page_content(),
         ],
         'output' => [
             'title'   => 'Output',
@@ -272,34 +307,26 @@ function aoc_install_pages() {
 }
 
 function aoc_output_index_content() {
-    $cards = [
-        ['Database', 'output/database', 'Life courses, works and connections of creators across four fields.'],
+    $rows = [
+        ['Database', 'output/database', 'Life courses, works and connections of the creators we study. The front-page timeline is drawn from it.'],
         ['Publications', 'output/publications', 'Articles, chapters and books by the project team.'],
         ['Reports', 'output/reports', 'Reports and working papers for download.'],
     ];
-    $cols = '';
-    foreach ($cards as $i => [$title, $path, $text]) {
-        $cols .= '<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"className":"is-style-aoc-card","layout":{"type":"default"}} -->
-<div class="wp-block-group is-style-aoc-card"><!-- wp:paragraph {"className":"aoc-card-number"} -->
-<p class="aoc-card-number">0' . ($i + 1) . '</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"level":3} -->
+    $out = '';
+    foreach ($rows as [$title, $path, $text]) {
+        $out .= '<!-- wp:group {"className":"aoc-link-row","layout":{"type":"default"}} -->
+<div class="wp-block-group aoc-link-row"><!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading"><a href="' . esc_url(home_url('/' . $path . '/')) . '">' . $title . '</a></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
 <p>' . $text . '</p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:group --></div>
-<!-- /wp:column -->
+<!-- /wp:group -->
 
 ';
     }
-    return '<!-- wp:columns {"align":"wide","className":"aoc-cards"} -->
-<div class="wp-block-columns alignwide aoc-cards">' . $cols . '</div>
-<!-- /wp:columns -->';
+    return $out;
 }
 
 function aoc_install_navigation($pages) {
